@@ -21,6 +21,7 @@ public class DuplicateArray {
 	    	    }
 	    return false;
     }
+	
 	private static void quickSort(int[] nums){
 		quickSort(nums, 0, nums.length-1);
 	}
@@ -43,11 +44,28 @@ public class DuplicateArray {
 	}
     public static void main(String[] args){
     	int[] nums = {2, 1, 3, 1, 4};
-    	quickSort(nums, 0, nums.length-1);
-    	for(int i=0; i<nums.length; i++)
-    		System.out.print(nums[i]);
-    	int[] num = {};
-    	System.out.println(num==null);
-    	System.out.println(num.length);
+    	int[] dup = new int[1];
+//    	quickSort(nums, 0, nums.length-1);
+//    	for(int i=0; i<nums.length; i++)
+//    		System.out.print(nums[i]);
+//    	int[] num = {};
+//    	System.out.println(num==null);
+    	System.out.println(duplicateB(nums, 5, dup));
+    	
+    }
+    
+    public static boolean duplicateB(int numbers[], int length, int [] duplication) {
+    	for(int i=0; i<length; i++){
+    		while (numbers[i] != i){
+    			if (numbers[numbers[i]] == numbers[i]){
+        			duplication[0] = numbers[i]; 
+    				return true;
+        		}
+    			int j = numbers[i];
+			    numbers[i] = numbers[j];
+			    numbers[j] = j;
+			    }	
+    	}
+    	return false;
     }
 }
