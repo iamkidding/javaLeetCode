@@ -31,26 +31,26 @@ public class ReconstructBinaryTree {
     	if (pre.length <= 0 || in.length <= 0 || pre == null || in == null)
     		return null;
         TreeNode root = new TreeNode(pre[0]);
-        int leftKidTreeNum = 0;
-        while (leftKidTreeNum <= in.length && in[leftKidTreeNum] != pre[0]) 
-        	leftKidTreeNum++;
-	    if (leftKidTreeNum > 0){
-            int[] leftPre = new int[leftKidTreeNum];
-	        int[] leftIn = new int[leftKidTreeNum];
-	        for (int i=0; i<leftKidTreeNum; i++) {
+        int leftLen = 0;
+        while (leftLen <= in.length && in[leftLen] != pre[0]) 
+        	leftLen++;
+	    if (leftLen > 0){
+            int[] leftPre = new int[leftLen];
+	        int[] leftIn = new int[leftLen];
+	        for (int i=0; i<leftLen; i++) {
 	        	leftPre[i] = pre[i+1];
 	        	leftIn[i] = in[i];
 	        }
 	        root.left = reConstructBinaryTreeSong(leftPre, leftIn);
 	    }
 	    else root.left = null;
-	    int rightKidTreeNum = pre.length - leftKidTreeNum - 1;
-	    if (rightKidTreeNum > 0) {
-            int[] rightPre = new int[rightKidTreeNum];
-            int[] rightIn = new int[rightKidTreeNum];
-            for (int i=0; i<rightKidTreeNum; i++) {
-            	rightPre[i] = pre[i+leftKidTreeNum];
-            	rightIn[i] = in[i+leftKidTreeNum];
+	    int rightLen = pre.length - leftLen - 1;
+	    if (rightLen > 0) {
+            int[] rightPre = new int[rightLen];
+            int[] rightIn = new int[rightLen];
+            for (int i=0; i<rightLen; i++) {
+            	rightPre[i] = pre[i+leftLen];
+            	rightIn[i] = in[i+leftLen];
             }
             root.right = reConstructBinaryTreeSong(rightPre, rightIn);
         }
