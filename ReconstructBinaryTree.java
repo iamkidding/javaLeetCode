@@ -23,10 +23,7 @@ public class ReconstructBinaryTree {
 		node.right = reConstructBinaryTree(pre, ps+index-is+1, pe, in, index+1, ie);
 		return node;
 	}
-//	自己的解法，出错
-//	测试用例:[1,2,3,4,5,6,7],[3,2,4,1,6,5,7]
-//	对应输出应该为:{1,2,5,3,4,6,7}
-//	输出为:{1,2,4,3,3,#,4,#,#,#,#,#,4}
+//自己的解法
     public TreeNode reConstructBinaryTreeSong(int [] pre,int [] in) {
     	if (pre.length <= 0 || in.length <= 0 || pre == null || in == null)
     		return null;
@@ -49,8 +46,8 @@ public class ReconstructBinaryTree {
             int[] rightPre = new int[rightLen];
             int[] rightIn = new int[rightLen];
             for (int i=0; i<rightLen; i++) {
-            	rightPre[i] = pre[i+leftLen];
-            	rightIn[i] = in[i+leftLen];
+            	rightPre[i] = pre[i+leftLen+1];
+            	rightIn[i] = in[i+leftLen+1];
             }
             root.right = reConstructBinaryTreeSong(rightPre, rightIn);
         }
