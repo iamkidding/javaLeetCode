@@ -1,5 +1,5 @@
 package javaLeetCode;
-//ÅÅÃû60%, ²âÊÔ18ms
+//æ’å60%ï¼Œè¿è¡Œæ—¶é—´18ms
 public class HammingDistance {
     public static int hammingDistance(int x, int y) {
         int i = 0;
