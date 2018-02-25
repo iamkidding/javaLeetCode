@@ -1,5 +1,3 @@
-package javaLeetCode;
-
 public class PowerOfBase {
     public static double power(double base, int exponent) {
         if (base - 0.0 < 0.00000000001) return 0.0;   // Double用equals比较，注意0.0和-0.0的情况

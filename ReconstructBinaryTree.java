@@ -23,7 +23,7 @@ public class ReconstructBinaryTree {
 		node.right = reConstructBinaryTree(pre, ps+index-is+1, pe, in, index+1, ie);
 		return node;
 	}
-//自己的解法
+//Solution of mine
     public TreeNode reConstructBinaryTreeSong(int [] pre,int [] in) {
     	if (pre.length <= 0 || in.length <= 0 || pre == null || in == null)
     		return null;

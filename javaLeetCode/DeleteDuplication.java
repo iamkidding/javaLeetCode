@@ -1,4 +1,5 @@
-package javaLeetCode;
+﻿package javaLeetCode;
+import javaLeetCode.ListNode;
 
 public class DeleteDuplication {
     public ListNode deleteDuplication(ListNode phead){
@@ -28,4 +29,5 @@ public class DeleteDuplication {
         }
         return phead;
     }
+
 }

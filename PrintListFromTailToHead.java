@@ -11,9 +11,9 @@ public class PrintListFromTailToHead {
         }
     }
 
-    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
-                
-    }
+//    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+
+//    }
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

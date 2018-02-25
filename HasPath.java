@@ -1,5 +1,5 @@
 package javaLeetCode;
-
+//没编完？
 public class HasPath {
     public static boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
     	if (matrix == null || matrix.length <= 0) return false; 
@@ -12,7 +12,8 @@ public class HasPath {
     				index++;
     			}
     		}
-    	}    	
+    	}
+    	return true;
     }
     
     public boolean cmp(char[] matrix, char[] str, int i, int index, int cols) {
