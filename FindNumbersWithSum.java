@@ -3,9 +3,9 @@ package javaLeetCode;
 import java.util.ArrayList;
 public class FindNumbersWithSum {
     public static ArrayList<Integer> findNumbersWithSum(int[] array, int sum){
-        if (array.length <= 0) return null;
-
         ArrayList<Integer> numbers = new ArrayList<>();
+        if (array.length <= 0) return numbers;
+
         int count = 0;
         for (int i=0; i<array.length-1; i++){
             int anotherIndex = binarySearch(array, i, array.length-1, sum - array[i]);
