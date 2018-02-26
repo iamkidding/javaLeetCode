@@ -1,5 +1,6 @@
 package javaLeetCode;
 
+import java.util.Stack;
 public class IsPopOrder {
     public boolean isPopOrder(int[] pushA, int[] popA){
 //        对题目理解错误，以为是将栈压好之后弹出，但实际是边压边弹。
@@ -36,13 +37,33 @@ public class IsPopOrder {
     }
 
     public boolean isPopOrderB(int[] pushA, int[] popA){
-        return false;
+        if (pushA.length <= 0 || popA.length <= 0 || pushA.length != popA.length)
+            return false;
+
+        Stack<Integer> aux = new Stack<>(); // 辅助栈
+
+        int nextPush = 0, nextPop = 0; // push数组和pop数组的指针
+        while (nextPop < popA.length){
+            // 当pop数组指针指向的下一个pop数不在栈顶时，向push数组push指针后的元素中查找，同时将其压入栈中
+            while (aux.isEmpty() || aux.peek() != popA[nextPop]){
+                if (nextPush == pushA.length) break; // 如果没找到就退出
+                aux.push(pushA[nextPush]);
+                nextPush++;
+            }
+
+            if (aux.peek() != popA[nextPop]) break; // 如果没找到就退出循环
+
+            aux.pop();
+            nextPop++;
+        }
+
+        return (aux.isEmpty() && nextPop == popA.length); // 检测是否完成了pop数组的整个遍历
     }
 
     public static void main(String[] args){
         int[] push = {1, 2, 3, 4, 5};
         int[] pop = {4, 5, 3, 2, 1};
         IsPopOrder is = new IsPopOrder();
-        System.out.print(is.isPopOrder(push, pop));
+        System.out.print(is.isPopOrderB(push, pop));
     }
 }
