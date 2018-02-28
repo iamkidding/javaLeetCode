@@ -47,9 +47,9 @@ public class IsSubtree {
             if (rootA.val == rootB.val)
                 result = doesTree1HasTree2(rootA, rootB);
             if (!result)
-                result = doesTree1HasTree2(rootA.left, rootB);
+                result = hasSubtree(rootA.left, rootB);
             if (!result)
-                result = doesTree1HasTree2(rootA.right, rootB);
+                result = hasSubtree(rootA.right, rootB);
         }
 
         return result;
