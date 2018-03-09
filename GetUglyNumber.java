@@ -33,7 +33,41 @@ public class GetUglyNumber {
         return number == 1;
     }
 
+    public static int getUglyNumberB(int index){
+        if (index <= 0) return 0;
+        // 用一个数组保存计算出的丑数
+        int [] uglyNumbers = new int[index];
+        uglyNumbers[0] = 1;
+        int nextUglyIndex = 1;
+        // 使用3个指针来确保当前指针指向的数乘以所代表的基础丑数（2,3,5）不在数组里面
+        int multiply2=0, multiply3=0, multiply5=0;
+
+        while (nextUglyIndex < index){
+            int min = Min(uglyNumbers[multiply2]*2, uglyNumbers[multiply3]*3, uglyNumbers[multiply5]*5);
+            uglyNumbers[nextUglyIndex] = min;
+            // 目前最大的丑数是数组最后一个
+            // 如果当前指针指向的数乘以所代表的基础丑数小于数组中的最大丑数，则乘后丑数已在数组里面
+            while(uglyNumbers[multiply2]*2 <= uglyNumbers[nextUglyIndex])
+                multiply2++;
+            while(uglyNumbers[multiply3]*3 <= uglyNumbers[nextUglyIndex])
+                multiply3++;
+            while(uglyNumbers[multiply5]*5 <= uglyNumbers[nextUglyIndex])
+                multiply5++;
+
+            nextUglyIndex++;
+        }
+
+        return uglyNumbers[index-1];
+    }
+
+    private static int Min(int num1, int num2, int num3){
+        int min = (num1 < num2)? num1:num2;
+        min = (min < num3)? min:num3;
+
+        return min;
+    }
+
     public static void main(String[] args){
-        System.out.print(getUglyNumber(4));
+        System.out.print(getUglyNumberB(1));
     }
 }
