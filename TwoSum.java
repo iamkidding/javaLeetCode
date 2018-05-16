@@ -1,4 +1,7 @@
 package javaLeetCode;
+
+import java.util.HashMap;
+
 /**
 * @author j
 *
@@ -65,10 +68,35 @@ public class TwoSum {
 		}
 		return -1;
 	}
+	public static int[] findTwoSumB(int[] nums, int target){
+        HashMap<Integer, Integer> search = new HashMap<>();
+        int[] result = {-1, -1};
+        int temp;
+
+        for (int i=0; i<nums.length; i++){
+            search.put(nums[i], i);
+        }
+
+        for (int i=0; i<nums.length; i++){
+            temp = target - nums[i];
+            System.out.println(nums[i]);
+            if (search.containsKey(temp)){
+                result[1] = i;
+                result[0] = search.get(temp);
+                if (result[0] != result[1])
+                    break;
+            }
+        }
+
+        return result;
+    }
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
        int[] nums = {14, 21, 2, 7, 11, 15};
-       findTwoSum(nums, 9);
+       int[] ns = {2,7,11,15};
+       nums = findTwoSumB(ns, 9);
+       System.out.print(nums[0]+","+nums[1]);
 	}
 
 }
